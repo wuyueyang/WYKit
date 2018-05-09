@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class HomeViewController: BaseViewController {
 
@@ -18,11 +19,20 @@ class HomeViewController: BaseViewController {
         wyButton.setTitle("标题", for: .normal)
         wyButton.setTitleColor(UIColor.black, for: .normal)
         wyButton.titleLabel?.font = UIFont.systemFont(ofSize: 11)
-        wyButton.titleLabel?.textAlignment = .right
-        wyButton.frame = CGRect(x: 100, y: 200, width: 80, height: 30)
+        wyButton.titleLabel?.textAlignment = .center
+//        wyButton.frame = CGRect(x: 100, y: 200, width: 80, height: 30)
 //        wyButton .setBackgroundColor(color: UIColor.orange, state: .normal)
-        
         self.view.addSubview(wyButton)
+        
+        wyButton.snp.makeConstraints { (make) in
+            make.left.equalTo(50)
+            make.top.equalTo(50)
+            make.width.equalTo(80)
+            make.height.equalTo(80)
+        }
+        let a = "@313"
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

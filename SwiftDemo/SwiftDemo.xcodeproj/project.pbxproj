@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55ECD3CD8150EB38409A9932 /* Pods_SwiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE0B23B5F255E1EAE4C2920 /* Pods_SwiftDemo.framework */; };
 		AF2D80EA209C47D400C9DF5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D80E9209C47D400C9DF5A /* AppDelegate.swift */; };
 		AF2D80F1209C47D600C9DF5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF2D80F0209C47D600C9DF5A /* Assets.xcassets */; };
 		AF2D80F4209C47D600C9DF5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2D80F2209C47D600C9DF5A /* LaunchScreen.storyboard */; };
@@ -19,6 +20,7 @@
 		AF4488D6209FF0AB0029607A /* WYTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4488D5209FF0AB0029607A /* WYTabBarController.swift */; };
 		AF4488DA20A024DB0029607A /* WYTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4488D920A024DB0029607A /* WYTabBarView.swift */; };
 		AF4488DC20A024F00029607A /* WYButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4488DB20A024F00029607A /* WYButton.swift */; };
+		AFF73DD320A1AA4B00B1FAB6 /* AppDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF73DD220A1AA4B00B1FAB6 /* AppDefine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7519CCD8A304C091E2205C88 /* Pods-SwiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftDemo/Pods-SwiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		8CE0B23B5F255E1EAE4C2920 /* Pods_SwiftDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95DDFB9F36F20A9D46DC67AA /* Pods-SwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftDemo/Pods-SwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
 		AF2D80E6209C47D400C9DF5A /* SwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2D80E9209C47D400C9DF5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF2D80F0209C47D600C9DF5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +62,7 @@
 		AF4488D5209FF0AB0029607A /* WYTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WYTabBarController.swift; sourceTree = "<group>"; };
 		AF4488D920A024DB0029607A /* WYTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WYTabBarView.swift; sourceTree = "<group>"; };
 		AF4488DB20A024F00029607A /* WYButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WYButton.swift; sourceTree = "<group>"; };
+		AFF73DD220A1AA4B00B1FAB6 /* AppDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55ECD3CD8150EB38409A9932 /* Pods_SwiftDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		020358E4ED60E888334FA287 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8CE0B23B5F255E1EAE4C2920 /* Pods_SwiftDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AF2D80DD209C47D400C9DF5A = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +106,8 @@
 				AF2D80FD209C47D600C9DF5A /* SwiftDemoTests */,
 				AF2D8108209C47D600C9DF5A /* SwiftDemoUITests */,
 				AF2D80E7209C47D400C9DF5A /* Products */,
+				E3FD2CAB11AC79E8413FC5C5 /* Pods */,
+				020358E4ED60E888334FA287 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				AF2D80E9209C47D400C9DF5A /* AppDelegate.swift */,
+				AFF73DD220A1AA4B00B1FAB6 /* AppDefine.swift */,
 				AF2D80F0209C47D600C9DF5A /* Assets.xcassets */,
 				AF2D80F2209C47D600C9DF5A /* LaunchScreen.storyboard */,
 				AF2D80F5209C47D600C9DF5A /* Info.plist */,
@@ -164,6 +182,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		E3FD2CAB11AC79E8413FC5C5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7519CCD8A304C091E2205C88 /* Pods-SwiftDemo.debug.xcconfig */,
+				95DDFB9F36F20A9D46DC67AA /* Pods-SwiftDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -171,9 +198,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF2D810E209C47D600C9DF5A /* Build configuration list for PBXNativeTarget "SwiftDemo" */;
 			buildPhases = (
+				AE841067505E195665367D1A /* [CP] Check Pods Manifest.lock */,
 				AF2D80E2209C47D400C9DF5A /* Sources */,
 				AF2D80E3209C47D400C9DF5A /* Frameworks */,
 				AF2D80E4209C47D400C9DF5A /* Resources */,
+				50A6EE9FAC189660AE176116 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -289,6 +318,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		50A6EE9FAC189660AE176116 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftDemo/Pods-SwiftDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftDemo/Pods-SwiftDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE841067505E195665367D1A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AF2D80E2209C47D400C9DF5A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -299,6 +377,7 @@
 				AF2D80EA209C47D400C9DF5A /* AppDelegate.swift in Sources */,
 				AF2D811D209C4C6600C9DF5A /* BaseViewController.swift in Sources */,
 				AF4488DA20A024DB0029607A /* WYTabBarView.swift in Sources */,
+				AFF73DD320A1AA4B00B1FAB6 /* AppDefine.swift in Sources */,
 				AF4488DC20A024F00029607A /* WYButton.swift in Sources */,
 				AF2D811F209C4CBA00C9DF5A /* HomeViewController.swift in Sources */,
 				AF2D8121209C4F8100C9DF5A /* OtherViewController.swift in Sources */,
@@ -464,6 +543,7 @@
 		};
 		AF2D810F209C47D600C9DF5A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7519CCD8A304C091E2205C88 /* Pods-SwiftDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -483,6 +563,7 @@
 		};
 		AF2D8110209C47D600C9DF5A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95DDFB9F36F20A9D46DC67AA /* Pods-SwiftDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
