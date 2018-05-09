@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ESTabBarController_swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,9 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeVc = HomeViewController()
         let otherVc = OtherViewController()
         
-        let tabBarController = WYTabBarController(controllers: [homeVc, otherVc], titles: ["首页", "其他"], normalImages: ["tab_bar_item1_normal", "tab_bar_item2_normal"], selectedImages: ["tab_bar_item1_select", "tab_bar_item2_select"], tabBarHeight: 0)
+        let tabBarController = ESTabBarController()
+        homeVc.tabBarItem = ESTabBarItem.init(title: "首页", image: UIImage(named: "tab_bar_item1_normal"), selectedImage: UIImage(named: "tab_bar_item1_select"))
+        otherVc.tabBarItem = ESTabBarItem.init(title: "其他", image: UIImage(named: "tab_bar_item2_normal"), selectedImage: UIImage(named: "tab_bar_item2_select"))
+        let navigationController = UINavigationController(rootViewController: tabBarController)
         
-        self.window?.rootViewController = tabBarController
+        tabBarController.viewControllers = [homeVc, otherVc]
+        
+        self.window?.rootViewController = navigationController
         
         return true
     }

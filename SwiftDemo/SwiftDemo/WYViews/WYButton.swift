@@ -22,9 +22,6 @@ class WYButton: UIButton {
     
     // 图片尺寸
     var imageSize: CGSize
-    // 选中的和未选中的图片
-    // 标题样式
-    // 标题
     var wyButtonType: WYButtonLayoutType
     
     init(type: WYButtonLayoutType, imageSize: CGSize) {
@@ -64,11 +61,13 @@ class WYButton: UIButton {
             return contentRect
             
         case .imageRight:
+            
             let x = contentRect.size.width - self.imageSize.width - 5
             let y = (contentRect.size.height - self.imageSize.height) / 2
             return CGRect(x: x, y: y, width: self.imageSize.width, height: self.imageSize.height)
             
         case .imageTop:
+            
             let x = (contentRect.width - self.imageSize.width) / 2
             let y: CGFloat = 0.0
             return CGRect(x: x, y: y, width: self.imageSize.width, height: self.imageSize.height)
