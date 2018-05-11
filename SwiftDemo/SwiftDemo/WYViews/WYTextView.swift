@@ -23,8 +23,6 @@ class WYTextView: UITextView, UITextViewDelegate {
         }
     }
     
-    
-    
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         self.delegate = self

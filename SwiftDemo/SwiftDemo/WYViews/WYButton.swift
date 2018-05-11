@@ -14,7 +14,7 @@ import UIKit
 /// - imageRight: 图片在右
 /// - imageTop: 图片在上
 /// - imageBottom: 图片在下
-enum WYButtonLayoutType {
+enum WYButtonLayoutType: Int {
     case imageLeft, imageRight, imageTop, imageBottom
 }
 
