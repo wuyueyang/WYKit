@@ -23,7 +23,6 @@ class WYPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         case systemTime
         case systemDate
         case systemDateAndTime
-        case dateAndTime
     }
     
     fileprivate var bgButton: UIButton
@@ -38,20 +37,7 @@ class WYPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     public var cancelButton: UIButton
     
-    public var pickerViewMode: PickerViewMode = .custom {
-        willSet {
-            switch newValue {
-            case .systemTime:
-                datePickerView?.datePickerMode = .time
-            case .systemDate:
-                datePickerView?.datePickerMode = .date
-            case .systemDateAndTime:
-                datePickerView?.datePickerMode = .dateAndTime
-            default:
-                datePickerView?.datePickerMode = .time
-            }
-        }
-    }
+    fileprivate var pickerViewMode: PickerViewMode
     
     fileprivate let ButtonBarHeight: CGFloat = 35.0
     
@@ -63,44 +49,9 @@ class WYPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     fileprivate var titles2D: Array<Array<String>>
     
-    public convenience init(titles: Array<String>?,
-                            frame: CGRect) {
-        self.init(frame: frame)
-        if self.pickerViewMode == .custom {
-            if let array = titles {
-                self.titles = array
-            }
-        }
-    }
-    
-    public convenience init(titles2D: Array<Array<String>>?,
-                            frame: CGRect) {
+    init(mode: PickerViewMode, frame: CGRect) {
         
-        self.init(frame: frame)
-        
-        if self.pickerViewMode == .custom {
-            if let array = titles2D {
-                self.titles2D = array
-            }
-        }
-    }
-    
-    fileprivate convenience init(titles: Array<String>?, titles2D: Array<Array<String>>?, frame: CGRect) {
-        
-        self.init(frame: frame)
-        
-        if self.pickerViewMode == .custom {
-            if let array = titles {
-                self.titles = array
-            }
-            if let array = titles2D {
-                self.titles2D = array
-            }
-        }
-    }
-    
-    override init(frame: CGRect) {
-        
+        self.pickerViewMode = mode
         self.bgButton = UIButton(type: .custom)
         self.buttonsView = UIView(frame: .zero)
         self.doneButton = UIButton(type: .custom)
@@ -113,28 +64,51 @@ class WYPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         self.settingViews()
     }
     
+    public convenience init(titles: Array<String>?, frame: CGRect) {
+        self.init(mode: .custom, frame: frame)
+        
+        if self.pickerViewMode == .custom {
+            if let array = titles {
+                self.titles = array
+            }
+        }
+    }
+    
+    public convenience init(titles2D: Array<Array<String>>?, frame: CGRect) {
+        
+        self.init(mode: .custom, frame: frame)
+        
+        if self.pickerViewMode == .custom {
+            if let array = titles2D {
+                self.titles2D = array
+            }
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     fileprivate func settingViews() {
         
-        bgButton.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        bgButton.backgroundColor = UIColor(white: 0, alpha: 0)
+        bgButton.addTarget(self, action: #selector(controlAction), for: .touchUpInside)
         self.addSubview(bgButton)
         bgButton.snp.makeConstraints { (make) in
-            make.edges.equalTo(self)
+            make.edges.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 0, 0))
         }
         
         buttonsView.backgroundColor = UIColor.white
         self.addSubview(buttonsView)
         buttonsView.snp.makeConstraints { (make) in
             make.left.right.equalTo(self)
-            make.bottom.equalTo(self).offset(-PickerViewHeight)
+            make.top.equalTo(self.snp.bottom)
             make.height.equalTo(ButtonBarHeight)
         }
         
         doneButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         doneButton.setTitle("确认", for: .normal)
+        doneButton.addTarget(self, action: #selector(WYPickerView.doneAction), for: .touchUpInside)
         doneButton.setTitleColor(UIColor.black, for: .normal)
         buttonsView.addSubview(doneButton)
         doneButton.snp.makeConstraints { (make) in
@@ -145,6 +119,7 @@ class WYPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         cancelButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         cancelButton.setTitle("取消", for: .normal)
+        cancelButton.addTarget(self, action: #selector(controlAction), for: .touchUpInside)
         cancelButton.setTitleColor(UIColor.black, for: .normal)
         buttonsView.addSubview(cancelButton)
         cancelButton.snp.makeConstraints { (make) in
@@ -152,83 +127,132 @@ class WYPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             make.left.equalTo(buttonsView.snp.left).offset(17)
             make.width.equalTo(50)
         }
-        
         switch pickerViewMode {
         case .custom:
             self.addCustomPickerView()
-        case .dateAndTime:
-            self.addDatePickerView()
-        case .systemTime:
-            self.addDatePickerView()
-        case .systemDate:
-            self.addDatePickerView()
-        case .systemDateAndTime:
-            self.addCustomPickerView()
+        case .systemTime, .systemDate, .systemDateAndTime:
+            self.addDatePickerView(mode: pickerViewMode)
         }
     }
     
     fileprivate func addCustomPickerView() {
-        if datePickerView != nil {
-            datePickerView!.removeFromSuperview()
-        }
         normalPickerView = UIPickerView(frame: .zero)
+        normalPickerView!.backgroundColor = UIColor.white
         normalPickerView!.delegate = self
         normalPickerView!.dataSource = self
         self.addSubview(normalPickerView!)
         normalPickerView!.snp.makeConstraints({ (make) in
             make.height.equalTo(PickerViewHeight)
-            make.left.right.bottom.equalTo(self)
+            make.left.right.equalTo(self)
+            make.top.equalTo(buttonsView.snp.bottom)
         })
     }
     
-    fileprivate func addDatePickerView() {
-        if normalPickerView != nil {
-            normalPickerView!.removeFromSuperview()
-        }
+    fileprivate func addDatePickerView(mode: PickerViewMode) {
         datePickerView = UIDatePicker(frame: .zero)
-        datePickerView!.addTarget(self, action: #selector(WYPickerView.datePickerAction(picker:)), for: .touchUpInside)
+        datePickerView!.backgroundColor = UIColor.white
+        switch mode {
+        case .systemTime:
+            datePickerView!.datePickerMode = .time
+        case .systemDate:
+            datePickerView!.datePickerMode = .date
+        case .systemDateAndTime:
+            datePickerView!.datePickerMode = .dateAndTime
+        case .custom:
+            return
+        }
         self.addSubview(datePickerView!)
         datePickerView!.snp.makeConstraints({ (make) in
             make.height.equalTo(PickerViewHeight)
-            make.left.right.bottom.equalTo(self)
+            make.left.right.equalTo(self)
+            make.top.equalTo(buttonsView.snp.bottom)
         })
     }
     
-    @objc fileprivate func datePickerAction(picker: UIDatePicker) {
-        guard delegate != nil else {
-            return
+    public func show() {
+        self.showAnimation()
+    }
+    
+    public func hide() {
+        self.hideAnimation()
+    }
+    
+    @objc fileprivate func controlAction() {
+        self.hide()
+    }
+    
+    @objc fileprivate func doneAction() {
+        
+        if delegate != nil {
+            switch pickerViewMode {
+            case .custom:
+                delegate!.didSelectRow(indexPath: selectIndexPath!)
+            case .systemTime, .systemDate, .systemDateAndTime:
+                let date = self.datePickerView!.date
+                delegate!.didSelectDate(date: date)
+            }
         }
-        let date = datePickerView!.date
-        delegate!.didSelectDate(date: date)
+        self.hide()
+    }
+    
+    fileprivate func showAnimation() {
+        
+        buttonsView.snp.remakeConstraints { (make) in
+            make.left.right.equalTo(self)
+            make.bottom.equalTo(self).offset(-PickerViewHeight)
+            make.height.equalTo(ButtonBarHeight)
+        }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.layoutIfNeeded()
+            self.bgButton.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        }
+    }
+    
+    fileprivate func hideAnimation() {
+        
+        buttonsView.snp.remakeConstraints { (make) in
+            make.left.right.equalTo(self)
+            make.top.equalTo(self.snp.bottom)
+            make.height.equalTo(ButtonBarHeight)
+        }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.layoutIfNeeded()
+            self.bgButton.backgroundColor = UIColor(white: 1, alpha: 0)
+        }) { (complet) in
+            self.removeFromSuperview()
+        }
     }
     
     //MARK: - UIPickerViewDelegate, UIPickerViewDataSource
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        if !titles.isEmpty {
-            return titles.count
-        }
-        if !titles2D.isEmpty {
+        
+        if titles2D.count > 0 {
             return titles2D.count
         }
-        return 0
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if !titles2D.isEmpty {
+        if titles2D.count > 0 {
             let array = titles2D[component]
-            if !array.isEmpty {
+            if array.count > 0 {
                 return array.count
             }
             return 0
+        }
+        if titles.count > 0 {
+            return titles.count
         }
         return 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if !titles.isEmpty {
+        if titles.count > 0 {
             return titles[row]
         }
-        if !titles2D.isEmpty {
+        if titles2D.count > 0 {
             return titles2D[component][row]
         }
         return nil
@@ -236,11 +260,6 @@ class WYPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        guard delegate != nil else {
-            return
-        }
         selectIndexPath = IndexPath(row: row, section: component)
-        delegate!.didSelectRow(indexPath: selectIndexPath!)
     }
-    
 }

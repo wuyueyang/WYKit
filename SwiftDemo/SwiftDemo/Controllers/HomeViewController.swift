@@ -13,14 +13,65 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let textView = WYTextView(frame: .zero)
-        textView.font = UIFont.systemFont(ofSize: 15)
+        self.view.backgroundColor = UIColor.groupTableViewBackground
         
+        let textView = WYTextView(frame: .zero)
+        textView.font = UIFont.systemFont(ofSize: 20)
+        textView.placeholder = "测试一下这个文字"
         self.view.addSubview(textView)
         
         textView.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self.view)
             make.height.equalTo(80)
+        }
+        
+        let button1 = UIButton(type: .custom)
+        button1.setTitle("picker", for: .normal)
+        button1.setTitleColor(UIColor.white, for: .normal)
+        button1.backgroundColor = UIColor.red
+        button1.addTarget(self, action: #selector(HomeViewController.showPickerView), for: .touchUpInside)
+        self.view.addSubview(button1)
+        button1.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(80)
+            make.height.equalTo(50)
+            make.top.equalTo(textView.snp.bottom).offset(20)
+        }
+        
+        
+        let circle = CircleProgressView(frame: .zero)
+        circle.progressWidth = 15.0
+        circle.progressColor = UIColor.orange
+        circle.progressBottomColor = UIColor.lightGray
+        circle.progress = CGFloat(arc4random()%101) / 100.0
+        self.view.addSubview(circle)
+        circle.snp.makeConstraints { (make) in
+            make.width.height.equalTo(50)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(button1.snp.bottom).offset(20)
+        }
+        
+        let line = LineProgressView(frame: .zero)
+        line.progressWidth = 15.0
+        line.progressColor = UIColor.orange
+        line.progressBottomColor = UIColor.lightGray
+        line.progress = CGFloat(arc4random()%101) / 100.0
+        self.view.addSubview(line)
+        line.snp.makeConstraints { (make) in
+            make.width.equalTo(150)
+            make.height.equalTo(50)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(circle.snp.bottom).offset(20)
+        }
+    }
+    
+    @objc fileprivate func showPickerView() {
+        
+        let picker = WYPickerView(titles2D: [["1", "2", "2", "2", "2"],["1", "2", "2", "2", "2"]], frame: .zero)
+        self.view.addSubview(picker)
+        picker.show()
+        picker.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(0, 0, 49, 0))
         }
         
     }

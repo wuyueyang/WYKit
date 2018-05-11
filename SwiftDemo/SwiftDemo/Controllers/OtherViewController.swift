@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Alamofire
+
 
 class OtherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Alamofire.request("123", method: .post, parameters: ["334":"123"], encoding: URLEncoding.methodDependent, headers: ["334":"123"]).responseJSON { (response) in
+            
+        }
         // Do any additional setup after loading the view.
     }
 

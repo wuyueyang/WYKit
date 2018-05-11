@@ -24,14 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeVc = HomeViewController()
         let otherVc = OtherViewController()
         
+        let navigationController1 = UINavigationController(rootViewController: homeVc)
+        navigationController1.navigationBar.isTranslucent = false
+        navigationController1.tabBarItem = ESTabBarItem.init(title: "首页", image: UIImage(named: "tab_bar_item1_normal"), selectedImage: UIImage(named: "tab_bar_item1_select"))
+        
+        let navigationController2 = UINavigationController(rootViewController: otherVc)
+        navigationController2.navigationBar.isTranslucent = false
+        navigationController2.tabBarItem = ESTabBarItem.init(title: "其他", image: UIImage(named: "tab_bar_item2_normal"), selectedImage: UIImage(named: "tab_bar_item2_select"))
+        
         let tabBarController = ESTabBarController()
-        homeVc.tabBarItem = ESTabBarItem.init(title: "首页", image: UIImage(named: "tab_bar_item1_normal"), selectedImage: UIImage(named: "tab_bar_item1_select"))
-        otherVc.tabBarItem = ESTabBarItem.init(title: "其他", image: UIImage(named: "tab_bar_item2_normal"), selectedImage: UIImage(named: "tab_bar_item2_select"))
-        let navigationController = UINavigationController(rootViewController: tabBarController)
+        tabBarController.viewControllers = [navigationController1, navigationController2]
         
-        tabBarController.viewControllers = [homeVc, otherVc]
-        
-        self.window?.rootViewController = navigationController
+        self.window?.rootViewController = tabBarController
         
         return true
     }
