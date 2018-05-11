@@ -136,14 +136,12 @@
 			isa = PBXGroup;
 			children = (
 				AF2D80E9209C47D400C9DF5A /* AppDelegate.swift */,
-				AFF73DD220A1AA4B00B1FAB6 /* AppDefine.swift */,
 				AF2D80F0209C47D600C9DF5A /* Assets.xcassets */,
 				AF2D80F2209C47D600C9DF5A /* LaunchScreen.storyboard */,
 				AF2D80F5209C47D600C9DF5A /* Info.plist */,
-				AF0A5D3620A2A0C10051D9A2 /* Extension */,
+				AF30D39E20A5435F00B56D31 /* Sources */,
 				AF2D8118209C493400C9DF5A /* Base */,
 				AF2D811B209C4C3D00C9DF5A /* Controllers */,
-				AF2D8117209C48E300C9DF5A /* WYViews */,
 			);
 			path = SwiftDemo;
 			sourceTree = "<group>";
@@ -191,6 +189,16 @@
 				AF2D8120209C4F8100C9DF5A /* OtherViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AF30D39E20A5435F00B56D31 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AFF73DD220A1AA4B00B1FAB6 /* AppDefine.swift */,
+				AF0A5D3620A2A0C10051D9A2 /* Extension */,
+				AF2D8117209C48E300C9DF5A /* WYViews */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		E3FD2CAB11AC79E8413FC5C5 /* Pods */ = {

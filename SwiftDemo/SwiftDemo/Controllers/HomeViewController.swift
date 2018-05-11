@@ -13,6 +13,16 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let textView = WYTextView(frame: .zero)
+        textView.font = UIFont.systemFont(ofSize: 15)
+        
+        self.view.addSubview(textView)
+        
+        textView.snp.makeConstraints { (make) in
+            make.top.left.right.equalTo(self.view)
+            make.height.equalTo(80)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
