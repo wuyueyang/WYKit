@@ -7,17 +7,14 @@
 //
 
 import UIKit
-import Alamofire
-
+import Moya
 
 class OtherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Alamofire.request("123", method: .post, parameters: ["334":"123"], encoding: URLEncoding.methodDependent, headers: ["334":"123"]).responseJSON { (response) in
-            
-        }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -25,7 +22,6 @@ class OtherViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

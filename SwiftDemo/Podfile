@@ -3,10 +3,17 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 target ‘SwiftDemo‘ do
+    # 网络框架
     pod 'Moya', '~> 11.0'
+    # json拆包
     pod 'SwiftyJSON', '~> 4.0'
+    # 代码自动布局
     pod 'SnapKit', '~> 4.0.0'
+    
     pod 'ESTabBarController-swift'
+    # 获取手机各种信息
     pod 'DeviceKit', '~> 1.3'
+    # 各种加密库
+    pod 'CryptoSwift'
 end
 

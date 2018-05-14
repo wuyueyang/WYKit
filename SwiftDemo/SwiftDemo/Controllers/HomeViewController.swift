@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Moya
+import SwiftyJSON
 
 class HomeViewController: BaseViewController {
 
@@ -67,11 +69,31 @@ class HomeViewController: BaseViewController {
     
     @objc fileprivate func showPickerView() {
         
+        let http = MoyaProvider<MyAPP>()
+        http.request(.login(username: "qqq", password: "qqq")) { result in
+            switch result {
+            case let .success(moyaResponse):
+                let data = moyaResponse.data // Data, your JSON response is probably in here!
+                let json = JSON(data)
+                print(json)
+                let statusCode = moyaResponse.statusCode // Int - 200, 401, 500, etc
+                print(statusCode)
+            case let .failure(error):
+                print(error)
+            }
+        }
+        
+        http.request(.uploadImage(image: Data()), callbackQueue: nil, progress: { progress in
+            <#code#>
+        }) { result in
+            <#code#>
+        }
+        
         let picker = WYPickerView(titles2D: [["1", "2", "2", "2", "2"],["1", "2", "2", "2", "2"]], frame: .zero)
         self.view.addSubview(picker)
         picker.show()
         picker.snp.makeConstraints { (make) in
-            make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(0, 0, 49, 0))
+            make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(0, 0, kTabBarHeight, 0))
         }
         
     }

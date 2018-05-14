@@ -15,12 +15,20 @@ let kScreenWidth = (UIScreen.main.bounds.size.width)
 // 屏幕高度
 let kScreenHeight = (UIScreen.main.bounds.size.height)
 // NavagationBar高度
-let kNavigationBarHeight:CGFloat = {
+let kNavigationBarHeight: CGFloat = {
     let device = Device()
     if device.isOneOf([.iPhoneX, Device.simulator(.iPhoneX)]) {
         return 88
     }
     return 64
+}()
+
+let kTabBarHeight: CGFloat = {
+    let device = Device()
+    if device.isOneOf([.iPhoneX, Device.simulator(.iPhoneX)]) {
+        return 83
+    }
+    return 49
 }()
 
 // UserDefaults 新的方式
