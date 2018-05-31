@@ -65,3 +65,7 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+
+# language type
+*.h linguist-language=swift
+*.m linguist-language=swift
