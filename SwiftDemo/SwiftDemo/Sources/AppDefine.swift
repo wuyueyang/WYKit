@@ -10,41 +10,36 @@ import UIKit
 import SnapKit
 import DeviceKit
 
-// 屏幕宽度
+/// 是否是X系列手机 .iPhoneX, .iPhoneXs, .iPhoneXsMax, .iPhoneXr
+var isIPhoneXSeries: Bool {
+    get {
+        let device = Device()
+        if device.isOneOf([.iPhoneX, .iPhoneXs, .iPhoneXsMax, .iPhoneXr, Device.simulator(.iPhoneX), Device.simulator(.iPhoneXs), Device.simulator(.iPhoneXsMax), Device.simulator(.iPhoneXr)]) {
+            return true
+        }
+        return false
+    }
+}
+/// 屏幕宽度
 let kScreenWidth = (UIScreen.main.bounds.size.width)
-// 屏幕高度
+/// 屏幕高度
 let kScreenHeight = (UIScreen.main.bounds.size.height)
-// NavagationBar高度
+/// NavagationBar高度
 let kNavigationBarHeight: CGFloat = {
     let device = Device()
-    if device.isOneOf([.iPhoneX, Device.simulator(.iPhoneX)]) {
+    if isIPhoneXSeries {
         return 88
     }
     return 64
 }()
-
+/// TabBar高度
 let kTabBarHeight: CGFloat = {
     let device = Device()
-    if device.isOneOf([.iPhoneX, Device.simulator(.iPhoneX)]) {
+    if isIPhoneXSeries {
         return 83
     }
     return 49
 }()
-
-// UserDefaults 新的方式
-// UserDefaults.standard.set(2, forKey: "123")
-
-extension UIDevice {
-    var isIphoneX:Bool {
-        get {
-            let device = Device()
-            if device.isOneOf([.iPhoneX, Device.simulator(.iPhoneX)]) {
-                return true
-            }
-            return false
-        }
-    }
-}
 
 
 

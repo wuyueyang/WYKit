@@ -37,7 +37,7 @@ class WYDate: NSObject {
     ///   - string: 当前的日期字符串
     ///   - format: 日期格式
     /// - Returns: 日期字符串
-    func dateString(string: String,format: String, timezone: TimeZone) -> String {
+    func dateString(string: String, format: String, timezone: TimeZone) -> String {
         let date = self.date(string: string)
         guard date != nil else {
             return ""

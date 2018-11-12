@@ -83,12 +83,6 @@ class HomeViewController: BaseViewController {
             }
         }
         
-        http.request(.uploadImage(image: Data()), callbackQueue: nil, progress: { progress in
-            <#code#>
-        }) { result in
-            <#code#>
-        }
-        
         let picker = WYPickerView(titles2D: [["1", "2", "2", "2", "2"],["1", "2", "2", "2", "2"]], frame: .zero)
         self.view.addSubview(picker)
         picker.show()
