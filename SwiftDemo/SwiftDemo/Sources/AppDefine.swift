@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import DeviceKit
+import Kingfisher
 
 /// 是否是X系列手机 .iPhoneX, .iPhoneXs, .iPhoneXsMax, .iPhoneXr
 var isIPhoneXSeries: Bool {
@@ -26,7 +27,6 @@ let kScreenWidth = (UIScreen.main.bounds.size.width)
 let kScreenHeight = (UIScreen.main.bounds.size.height)
 /// NavagationBar高度
 let kNavigationBarHeight: CGFloat = {
-    let device = Device()
     if isIPhoneXSeries {
         return 88
     }
@@ -34,13 +34,28 @@ let kNavigationBarHeight: CGFloat = {
 }()
 /// TabBar高度
 let kTabBarHeight: CGFloat = {
-    let device = Device()
     if isIPhoneXSeries {
         return 83
     }
     return 49
 }()
-
+/// 距离屏幕最下方的安全距离
+let kSafeBottomSpacing: CGFloat = {
+    if isIPhoneXSeries {
+        return 74
+    }
+    return 40
+}()
+/// 主题蓝色调
+let kMainColor: UIColor = {
+    return UIColor("#48B6FE")
+}()
+/// 同一控制打印
+func wyPrint(message: String) {
+    #if DEBUG
+    print("\(message)")
+    #endif
+}
 
 
 

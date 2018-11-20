@@ -36,7 +36,7 @@ class WYButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setBackgroundColor(color: UIColor, state: UIControlState) {
+    func setBackgroundColor(color: UIColor, state: UIControl.State) {
         
         let image = self.image(color: color)
         self.setBackgroundImage(image, for: state)
